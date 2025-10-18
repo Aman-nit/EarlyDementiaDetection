@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DementiaGuard AI - Early Detection System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-section">
+                        <div class="logo-icon">🧠</div>
+                        <h1 class="app-title">DementiaGuard AI</h1>
+                    </div>
+                    <nav class="header-nav">
+                        <button class="btn btn--outline btn--sm">Help</button>
+                        <button class="btn btn--outline btn--sm">Settings</button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Progress Indicator -->
+        <div class="progress-container">
+            <div class="container">
+                <div class="progress-bar">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <span>Patient Info</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <span>Speech Test</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <span>Cognitive Tests</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <span>Neuroimaging</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="5">
+                        <div class="step-number">5</div>
+                        <span>Behavioral</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="6">
+                        <div class="step-number">6</div>
+                        <span>Results</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <div class="container">
+                <!-- Step 1: Patient Information -->
+                <div class="step-content active" id="step-1">
+                    <div class="step-header">
+                        <h2>Patient Information</h2>
+                        <p>Please provide basic information about the patient</p>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Patient Name</label>
+                            <input type="text" class="form-control" id="patient-name" placeholder="Enter patient name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Age</label>
+                            <input type="number" class="form-control" id="patient-age" placeholder="Age" min="50" max="100">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Gender</label>
+                            <select class="form-control" id="patient-gender">
+                                <option value="">Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Education Level</label>
+                            <select class="form-control" id="patient-education">
+                                <option value="">Select education level</option>
+                                <option value="elementary">Elementary</option>
+                                <option value="high-school">High School</option>
+                                <option value="college">College</option>
+                                <option value="graduate">Graduate</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Medical History</h3>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="diabetes">
+                                <span class="checkmark"></span>
+                                Diabetes
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="hypertension">
+                                <span class="checkmark"></span>
+                                Hypertension
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="heart-disease">
+                                <span class="checkmark"></span>
+                                Heart Disease
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="stroke-history">
+                                <span class="checkmark"></span>
+                                Stroke History
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="depression">
+                                <span class="checkmark"></span>
+                                Depression
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="sleep-disorders">
+                                <span class="checkmark"></span>
+                                Sleep Disorders
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Family History</h3>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="family-dementia">
+                            <span class="checkmark"></span>
+                            Family history of dementia or Alzheimer's disease
+                        </label>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Current Medications</h3>
+                        <textarea class="form-control" id="medications" rows="3" placeholder="List current medications (optional)"></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 2: Speech Assessment -->
+                <div class="step-content" id="step-2">
+                    <div class="step-header">
+                        <h2>Speech Assessment</h2>
+                        <p>Please describe what you see in the image below. Speak naturally for about 1-2 minutes.</p>
+                    </div>
+                    
+                    <div class="assessment-container">
+                        <div class="image-prompt">
+                            <div class="prompt-image">
+                                <div class="image-placeholder">
+                                    <p>🍪 Cookie Theft Picture</p>
+                                    <small>Describe what's happening in this scene</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="recording-section">
+                            <div class="microphone-container">
+                                <button class="mic-button" id="record-btn">
+                                    <span class="mic-icon">🎤</span>
+                                </button>
+                                <div class="recording-status" id="recording-status">Click to start recording</div>
+                            </div>
+                            
+                            <div class="audio-controls hidden" id="audio-controls">
+                                <div class="waveform-container">
+                                    <div class="waveform" id="waveform">
+                                        <div class="wave-bar"></div>
+                                        <div class="wave-bar"></div>
+                                        <div class="wave-bar"></div>
+                                        <div class="wave-bar"></div>
+                                        <div class="wave-bar"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="recording-timer" id="recording-timer">0:00 / 2:00</div>
+                                
+                                <div class="audio-actions">
+                                    <button class="btn btn--outline" id="play-btn">▶ Play</button>
+                                    <button class="btn btn--secondary" id="re-record-btn">🔄 Re-record</button>
+                                </div>
+                            </div>
+                            
+                            <div class="upload-option">
+                                <p>Or upload an existing audio file:</p>
+                                <input type="file" id="audio-upload" accept="audio/*" class="file-input">
+                                <label for="audio-upload" class="btn btn--outline">📁 Choose File</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Cognitive Tests -->
+                <div class="step-content" id="step-3">
+                    <div class="step-header">
+                        <h2>Cognitive Tests</h2>
+                        <p>Complete the following cognitive assessments</p>
+                    </div>
+                    
+                    <div class="test-container">
+                        <!-- Memory Test -->
+                        <div class="test-section" id="memory-test">
+                            <h3>Memory Recall Test</h3>
+                            <p>Remember the sequence of words shown below:</p>
+                            <div class="memory-sequence" id="memory-sequence">
+                                <div class="word-card">Apple</div>
+                                <div class="word-card">River</div>
+                                <div class="word-card">Table</div>
+                                <div class="word-card">Happy</div>
+                                <div class="word-card">Mountain</div>
+                            </div>
+                            <div class="test-timer">Time remaining: <span id="memory-timer">30</span> seconds</div>
+                            <button class="btn btn--primary" id="start-memory-recall">Start Recall</button>
+                            
+                            <div class="recall-input hidden" id="recall-input">
+                                <p>Enter the words you remember (separated by commas):</p>
+                                <input type="text" class="form-control" id="recalled-words" placeholder="apple, river, table...">
+                            </div>
+                        </div>
+                        
+                        <!-- Clock Drawing Test -->
+                        <div class="test-section" id="clock-test">
+                            <h3>Clock Drawing Test</h3>
+                            <p>Draw a clock showing the time 2:30</p>
+                            <div class="drawing-container">
+                                <canvas id="clock-canvas" width="300" height="300"></canvas>
+                                <div class="drawing-controls">
+                                    <button class="btn btn--outline" id="clear-canvas">Clear</button>
+                                    <button class="btn btn--secondary" id="undo-draw">Undo</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Word Fluency Test -->
+                        <div class="test-section" id="fluency-test">
+                            <h3>Word Fluency Test</h3>
+                            <p>Name as many animals as you can in 60 seconds:</p>
+                            <div class="fluency-timer">Time remaining: <span id="fluency-timer">60</span> seconds</div>
+                            <textarea class="form-control" id="animal-words" rows="5" placeholder="Type animal names here..." disabled></textarea>
+                            <button class="btn btn--primary" id="start-fluency">Start Test</button>
+                        </div>
+                        
+                        <!-- Simple Math -->
+                        <div class="test-section" id="math-test">
+                            <h3>Simple Calculation</h3>
+                            <div class="math-problem">
+                                <p class="problem-text">What is 15 + 27?</p>
+                                <input type="number" class="form-control math-input" id="math-answer" placeholder="Enter answer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Neuroimaging -->
+                <div class="step-content" id="step-4">
+                    <div class="step-header">
+                        <h2>Neuroimaging (Optional)</h2>
+                        <p>Upload MRI or CT scan images if available</p>
+                    </div>
+                    
+                    <div class="upload-container">
+                        <div class="file-drop-zone" id="image-drop-zone">
+                            <div class="drop-icon">📁</div>
+                            <p>Drag and drop DICOM files here</p>
+                            <p class="file-types">Supports: .dcm, .jpg, .png files</p>
+                            <input type="file" id="image-upload" multiple accept=".dcm,.jpg,.jpeg,.png" class="hidden-input">
+                            <button class="btn btn--primary" onclick="document.getElementById('image-upload').click()">Choose Files</button>
+                        </div>
+                        
+                        <div class="uploaded-files" id="uploaded-files">
+                            <!-- Uploaded files will appear here -->
+                        </div>
+                        
+                        <div class="skip-section">
+                            <button class="btn btn--outline" id="skip-imaging">Skip This Step</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Behavioral Assessment -->
+                <div class="step-content" id="step-5">
+                    <div class="step-header">
+                        <h2>Behavioral Assessment (Optional)</h2>
+                        <p>Answer questions about daily activities and lifestyle</p>
+                    </div>
+                    
+                    <div class="behavioral-form">
+                        <div class="form-group">
+                            <label class="form-label">Sleep Quality (1-10 scale)</label>
+                            <div class="scale-input">
+                                <input type="range" class="range-slider" id="sleep-quality" min="1" max="10" value="5">
+                                <div class="scale-labels">
+                                    <span>Poor</span>
+                                    <span>Excellent</span>
+                                </div>
+                                <div class="scale-value">5</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Physical Activity Level</label>
+                            <select class="form-control" id="activity-level">
+                                <option value="">Select activity level</option>
+                                <option value="sedentary">Sedentary (little to no exercise)</option>
+                                <option value="light">Light (1-2 days/week)</option>
+                                <option value="moderate">Moderate (3-4 days/week)</option>
+                                <option value="active">Active (5+ days/week)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Social Interaction Frequency</label>
+                            <select class="form-control" id="social-interaction">
+                                <option value="">Select frequency</option>
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="rarely">Rarely</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Mood Assessment</label>
+                            <div class="mood-options">
+                                <label class="radio-item">
+                                    <input type="radio" name="mood" value="excellent">
+                                    <span class="radio-mark"></span>
+                                    😊 Excellent
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="mood" value="good">
+                                    <span class="radio-mark"></span>
+                                    🙂 Good
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="mood" value="fair">
+                                    <span class="radio-mark"></span>
+                                    😐 Fair
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="mood" value="poor">
+                                    <span class="radio-mark"></span>
+                                    😟 Poor
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Wearable Device Data</label>
+                            <input type="file" id="wearable-data" accept=".csv,.json,.txt" class="file-input">
+                            <label for="wearable-data" class="btn btn--outline">📱 Upload Device Data</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Results -->
+                <div class="step-content" id="step-6">
+                    <div class="step-header">
+                        <h2>Assessment Results</h2>
+                        <p>Your comprehensive dementia risk assessment</p>
+                    </div>
+                    
+                    <!-- Main Results Header -->
+                    <div class="results-header">
+                        <div class="overall-score-card">
+                            <div class="score-circle-container">
+                                <div class="score-circle" id="overall-score-circle">
+                                    <div class="score-value" id="overall-score-value">58%</div>
+                                    <div class="score-label">Risk Score</div>
+                                </div>
+                            </div>
+                            <div class="score-details">
+                                <div class="risk-level medium" id="risk-level">Medium Risk</div>
+                                <div class="confidence-info">
+                                    <span class="confidence-value" id="confidence-value">85% Confidence</span>
+                                    <small>Based on 5 of 6 components completed</small>
+                                </div>
+                                <div class="assessment-date">Assessment Date: October 18, 2025</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Navigation -->
+                    <div class="results-tabs">
+                        <button class="tab-button active" data-tab="summary">📊 Summary</button>
+                        <button class="tab-button" data-tab="components">🔍 Component Details</button>
+                        <button class="tab-button" data-tab="recommendations">💡 Recommendations</button>
+                        <button class="tab-button" data-tab="methodology">🧮 How It's Calculated</button>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content active" id="tab-summary">
+                        <!-- Component Breakdown -->
+                        <div class="components-grid">
+                            <div class="component-card" data-component="demographic">
+                                <div class="component-header">
+                                    <div class="component-icon">👥</div>
+                                    <div class="component-info">
+                                        <h4>Demographics &amp; Background</h4>
+                                        <span class="weight-indicator">Weight: 15%</span>
+                                    </div>
+                                    <div class="component-score moderate">45%</div>
+                                </div>
+                                <div class="progress-bar-component">
+                                    <div class="progress-fill moderate" style="width: 45%"></div>
+                                </div>
+                                <div class="component-status">Age-related risk factors present</div>
+                            </div>
+
+                            <div class="component-card" data-component="medical">
+                                <div class="component-header">
+                                    <div class="component-icon">🏥</div>
+                                    <div class="component-info">
+                                        <h4>Medical History</h4>
+                                        <span class="weight-indicator">Weight: 20%</span>
+                                    </div>
+                                    <div class="component-score moderate">60%</div>
+                                </div>
+                                <div class="progress-bar-component">
+                                    <div class="progress-fill moderate" style="width: 60%"></div>
+                                </div>
+                                <div class="component-status">Family history of dementia noted</div>
+                            </div>
+
+                            <div class="component-card" data-component="speech">
+                                <div class="component-header">
+                                    <div class="component-icon">🎤</div>
+                                    <div class="component-info">
+                                        <h4>Speech Analysis</h4>
+                                        <span class="weight-indicator">Weight: 25%</span>
+                                    </div>
+                                    <div class="component-score high">65%</div>
+                                </div>
+                                <div class="progress-bar-component">
+                                    <div class="progress-fill high" style="width: 65%"></div>
+                                </div>
+                                <div class="component-status">Mild speech pattern changes detected</div>
+                            </div>
+
+                            <div class="component-card" data-component="cognitive">
+                                <div class="component-header">
+                                    <div class="component-icon">🧠</div>
+                                    <div class="component-info">
+                                        <h4>Cognitive Tests</h4>
+                                        <span class="weight-indicator">Weight: 25%</span>
+                                    </div>
+                                    <div class="component-score high">70%</div>
+                                </div>
+                                <div class="progress-bar-component">
+                                    <div class="progress-fill high" style="width: 70%"></div>
+                                </div>
+                                <div class="component-status">Some cognitive test concerns</div>
+                            </div>
+
+                            <div class="component-card not-available" data-component="neuroimaging">
+                                <div class="component-header">
+                                    <div class="component-icon">🖼️</div>
+                                    <div class="component-info">
+                                        <h4>Brain Imaging</h4>
+                                        <span class="weight-indicator">Weight: 10%</span>
+                                    </div>
+                                    <div class="component-score">N/A</div>
+                                </div>
+                                <div class="progress-bar-component">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <div class="component-status">MRI data not available</div>
+                            </div>
+
+                            <div class="component-card" data-component="behavioral">
+                                <div class="component-header">
+                                    <div class="component-icon">🏃‍♀️</div>
+                                    <div class="component-info">
+                                        <h4>Lifestyle Factors</h4>
+                                        <span class="weight-indicator">Weight: 5%</span>
+                                    </div>
+                                    <div class="component-score low">35%</div>
+                                </div>
+                                <div class="progress-bar-component">
+                                    <div class="progress-fill low" style="width: 35%"></div>
+                                </div>
+                                <div class="component-status">Good lifestyle factors present</div>
+                            </div>
+                        </div>
+
+                        <!-- Key Findings -->
+                        <div class="key-findings">
+                            <h3>Key Findings</h3>
+                            <div class="findings-list">
+                                <div class="finding-item positive">
+                                    <span class="finding-icon">✅</span>
+                                    <span>Good lifestyle factors support brain health</span>
+                                </div>
+                                <div class="finding-item concern">
+                                    <span class="finding-icon">⚠️</span>
+                                    <span>Age-related risk factors are present</span>
+                                </div>
+                                <div class="finding-item concern">
+                                    <span class="finding-icon">⚠️</span>
+                                    <span>Mild changes detected in speech patterns</span>
+                                </div>
+                                <div class="finding-item concern">
+                                    <span class="finding-icon">⚠️</span>
+                                    <span>Some cognitive test results require attention</span>
+                                </div>
+                                <div class="finding-item neutral">
+                                    <span class="finding-icon">ℹ️</span>
+                                    <span>Brain imaging would provide additional insights</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="tab-components">
+                        <div class="detailed-components">
+                            <!-- Demographics Details -->
+                            <div class="component-detail-card">
+                                <div class="detail-header">
+                                    <h4>👥 Demographics &amp; Background (15% weight)</h4>
+                                    <div class="detail-score moderate">45% Risk</div>
+                                </div>
+                                <div class="detail-breakdown">
+                                    <div class="detail-item">
+                                        <span>Age contribution:</span>
+                                        <span class="value moderate">+40 points</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span>Education level:</span>
+                                        <span class="value positive">-10 points</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span>Gender factor:</span>
+                                        <span class="value neutral">+5 points</span>
+                                    </div>
+                                </div>
+                                <p class="detail-explanation">Higher age increases risk, but good education level provides protective benefits.</p>
+                            </div>
+
+                            <!-- Medical History Details -->
+                            <div class="component-detail-card">
+                                <div class="detail-header">
+                                    <h4>🏥 Medical History (20% weight)</h4>
+                                    <div class="detail-score moderate">60% Risk</div>
+                                </div>
+                                <div class="detail-breakdown">
+                                    <div class="detail-item">
+                                        <span>Total risk factors identified:</span>
+                                        <span class="value moderate">3 conditions</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span>High-risk conditions:</span>
+                                        <span class="value concern">Family history of dementia</span>
+                                    </div>
+                                </div>
+                                <p class="detail-explanation">Family history significantly increases risk. Other medical conditions contribute moderately.</p>
+                            </div>
+
+                            <!-- Speech Analysis Details -->
+                            <div class="component-detail-card">
+                                <div class="detail-header">
+                                    <h4>🎤 Speech Analysis (25% weight)</h4>
+                                    <div class="detail-score high">65% Risk</div>
+                                </div>
+                                <div class="detail-breakdown">
+                                    <div class="detail-item">
+                                        <span>AI prediction score:</span>
+                                        <span class="value high">0.65</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span>Speaking rate:</span>
+                                        <span class="value moderate">1.8 words/sec</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span>Vocabulary diversity:</span>
+                                        <span class="value moderate">0.45</span>
+                                    </div>
+                                </div>
+                                <p class="detail-explanation">Subtle changes in speech patterns may indicate early cognitive changes.</p>
+                            </div>
+
+                            <!-- Cognitive Tests Details -->
+                            <div class="component-detail-card">
+                                <div class="detail-header">
+                                    <h4>🧠 Cognitive Tests (25% weight)</h4>
+                                    <div class="detail-score high">70% Risk</div>
+                                </div>
+                                <div class="detail-breakdown">
+                                    <div class="detail-item">
+                                        <span>Memory recall:</span>
+                                        <span class="value moderate">6/10 words remembered</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span>Clock drawing score:</span>
+                                        <span class="value moderate">4/6 points</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span>Word fluency:</span>
+                                        <span class="value concern">11 animals/minute</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span>Estimated MMSE:</span>
+                                        <span class="value moderate">24/30</span>
+                                    </div>
+                                </div>
+                                <p class="detail-explanation">Test scores are below optimal range for your age group but not severely impaired.</p>
+                            </div>
+
+                            <!-- Lifestyle Factors Details -->
+                            <div class="component-detail-card">
+                                <div class="detail-header">
+                                    <h4>🏃‍♀️ Lifestyle Factors (5% weight)</h4>
+                                    <div class="detail-score low">35% Risk</div>
+                                </div>
+                                <div class="detail-breakdown">
+                                    <div class="detail-item">
+                                        <span>Sleep quality:</span>
+                                        <span class="value positive">5/10 (Fair)</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span>Physical activity:</span>
+                                        <span class="value positive">4/5 (Good)</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span>Mood concerns:</span>
+                                        <span class="value positive">None reported</span>
+                                    </div>
+                                </div>
+                                <p class="detail-explanation">Your lifestyle factors are protective and help reduce overall risk.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="tab-recommendations">
+                        <div class="recommendations-detailed">
+                            <!-- Immediate Actions -->
+                            <div class="recommendation-section">
+                                <h3 class="section-title urgent">🚨 Immediate Actions</h3>
+                                <div class="recommendation-cards">
+                                    <div class="recommendation-card urgent">
+                                        <div class="rec-icon">👨‍⚕️</div>
+                                        <div class="rec-content">
+                                            <h4>Discuss with Primary Care Physician</h4>
+                                            <p>Share these results with your doctor to discuss next steps and potential referrals.</p>
+                                            <div class="rec-priority">Priority: High</div>
+                                        </div>
+                                    </div>
+                                    <div class="recommendation-card moderate">
+                                        <div class="rec-icon">🧠</div>
+                                        <div class="rec-content">
+                                            <h4>Consider Cognitive Assessment by Specialist</h4>
+                                            <p>A neurologist or neuropsychologist can provide more detailed evaluation.</p>
+                                            <div class="rec-priority">Priority: Medium</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Lifestyle Changes -->
+                            <div class="recommendation-section">
+                                <h3 class="section-title positive">🌟 Lifestyle Recommendations</h3>
+                                <div class="recommendation-cards">
+                                    <div class="recommendation-card positive">
+                                        <div class="rec-icon">🏃‍♂️</div>
+                                        <div class="rec-content">
+                                            <h4>Engage in Regular Physical Exercise</h4>
+                                            <p>Aim for 150 minutes of moderate exercise per week. Walking, swimming, or cycling are excellent choices.</p>
+                                        </div>
+                                    </div>
+                                    <div class="recommendation-card positive">
+                                        <div class="rec-icon">👥</div>
+                                        <div class="rec-content">
+                                            <h4>Maintain Social Connections</h4>
+                                            <p>Regular social interaction helps maintain cognitive function. Join clubs, volunteer, or spend time with family.</p>
+                                        </div>
+                                    </div>
+                                    <div class="recommendation-card positive">
+                                        <div class="rec-icon">🥗</div>
+                                        <div class="rec-content">
+                                            <h4>Follow Mediterranean-style Diet</h4>
+                                            <p>Emphasize fruits, vegetables, whole grains, fish, and healthy fats like olive oil.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Follow-up Schedule -->
+                            <div class="recommendation-section">
+                                <h3 class="section-title neutral">📅 Follow-up &amp; Monitoring</h3>
+                                <div class="timeline-recommendations">
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker">6M</div>
+                                        <div class="timeline-content">
+                                            <h4>6 Month Follow-up</h4>
+                                            <p>Repeat abbreviated assessment to monitor changes</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker">1Y</div>
+                                        <div class="timeline-content">
+                                            <h4>Annual Full Assessment</h4>
+                                            <p>Complete cognitive evaluation including brain imaging if recommended</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker">📊</div>
+                                        <div class="timeline-content">
+                                            <h4>Ongoing Monitoring</h4>
+                                            <p>Track memory exercises and note any changes in daily function</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="tab-methodology">
+                        <div class="methodology-content">
+                            <h3>How Your Risk Score is Calculated</h3>
+                            <p class="methodology-intro">Your overall risk score of <strong>58%</strong> is calculated by combining scores from different assessment components, each weighted by their predictive importance for dementia risk.</p>
+                            
+                            <!-- Calculation Breakdown -->
+                            <div class="calculation-breakdown">
+                                <h4>📊 Weighted Score Calculation</h4>
+                                <div class="calculation-formula">
+                                    <div class="formula-item">
+                                        <span class="component">Demographics</span>
+                                        <span class="calculation">45% × 15% =</span>
+                                        <span class="result">6.8 points</span>
+                                    </div>
+                                    <div class="formula-item">
+                                        <span class="component">Medical History</span>
+                                        <span class="calculation">60% × 20% =</span>
+                                        <span class="result">12.0 points</span>
+                                    </div>
+                                    <div class="formula-item">
+                                        <span class="component">Speech Analysis</span>
+                                        <span class="calculation">65% × 25% =</span>
+                                        <span class="result">16.3 points</span>
+                                    </div>
+                                    <div class="formula-item">
+                                        <span class="component">Cognitive Tests</span>
+                                        <span class="calculation">70% × 25% =</span>
+                                        <span class="result">17.5 points</span>
+                                    </div>
+                                    <div class="formula-item disabled">
+                                        <span class="component">Brain Imaging</span>
+                                        <span class="calculation">N/A × 10% =</span>
+                                        <span class="result">0.0 points</span>
+                                    </div>
+                                    <div class="formula-item">
+                                        <span class="component">Lifestyle Factors</span>
+                                        <span class="calculation">35% × 5% =</span>
+                                        <span class="result">1.8 points</span>
+                                    </div>
+                                    <div class="formula-total">
+                                        <span class="component"><strong>Total Score</strong></span>
+                                        <span class="calculation">54.4 ÷ 95% =</span>
+                                        <span class="result"><strong>57.3% ≈ 58%</strong></span>
+                                    </div>
+                                </div>
+                                <p class="calculation-note"><small>*Score adjusted for missing brain imaging data (5% missing weight redistributed)</small></p>
+                            </div>
+
+                            <!-- Component Weights Explanation -->
+                            <div class="weights-explanation">
+                                <h4>🏗️ Why These Weights?</h4>
+                                <div class="weight-reasoning">
+                                    <div class="reasoning-item">
+                                        <div class="weight-badge high">25%</div>
+                                        <div class="reasoning-content">
+                                            <h5>Speech Analysis &amp; Cognitive Tests</h5>
+                                            <p>These direct measures of cognitive function are the strongest predictors of dementia risk.</p>
+                                        </div>
+                                    </div>
+                                    <div class="reasoning-item">
+                                        <div class="weight-badge medium">20%</div>
+                                        <div class="reasoning-content">
+                                            <h5>Medical History</h5>
+                                            <p>Family history and medical conditions significantly influence risk but are less modifiable.</p>
+                                        </div>
+                                    </div>
+                                    <div class="reasoning-item">
+                                        <div class="weight-badge medium">15%</div>
+                                        <div class="reasoning-content">
+                                            <h5>Demographics</h5>
+                                            <p>Age and education are important baseline factors but cannot be changed.</p>
+                                        </div>
+                                    </div>
+                                    <div class="reasoning-item">
+                                        <div class="weight-badge low">10%</div>
+                                        <div class="reasoning-content">
+                                            <h5>Brain Imaging</h5>
+                                            <p>Structural brain changes provide valuable insights when available.</p>
+                                        </div>
+                                    </div>
+                                    <div class="reasoning-item">
+                                        <div class="weight-badge low">5%</div>
+                                        <div class="reasoning-content">
+                                            <h5>Lifestyle Factors</h5>
+                                            <p>While important for prevention, lifestyle has smaller immediate predictive value.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Confidence Score -->
+                            <div class="confidence-explanation">
+                                <h4>🎯 Confidence Level: 85%</h4>
+                                <p>The confidence level reflects how complete your assessment is:</p>
+                                <ul>
+                                    <li><strong>5 of 6 components completed</strong> (83% completion)</li>
+                                    <li><strong>High-weight components included</strong> (Speech &amp; Cognitive tests)</li>
+                                    <li><strong>Consistent results across components</strong></li>
+                                </ul>
+                                <p class="confidence-note">Adding brain imaging data would increase confidence to ~95%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="result-actions">
+                        <button class="btn btn--primary" id="share-doctor">👨‍⚕️ Share with Doctor</button>
+                        <button class="btn btn--secondary" id="download-report">📄 Download Report</button>
+                        <button class="btn btn--outline" id="schedule-followup">📅 Schedule Follow-up</button>
+                    </div>
+                </div>
+                
+                <!-- Navigation Buttons -->
+                <div class="step-navigation">
+                    <button class="btn btn--outline" id="prev-btn" disabled>← Previous</button>
+                    <button class="btn btn--primary" id="next-btn">Next →</button>
+                    <button class="btn btn--primary hidden" id="submit-btn">Complete Assessment</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay hidden" id="loading-overlay">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <h3>Processing Assessment</h3>
+                <p>AI is analyzing your data...</p>
+                <div class="loading-progress">
+                    <div class="progress-bar-loading">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4>Contact</h4>
+                        <p>📞 1-800-DEMENTIA<br>📧 support@dementiaguard.ai</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Legal</h4>
+                        <p><a href="#">Privacy Policy</a><br><a href="#">Terms of Service</a></p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Medical Disclaimer</h4>
+                        <p><small>This tool is for informational purposes only and should not replace professional medical advice.</small></p>
+                    </div>
+                    <div class="footer-section">
+                        <div class="security-badges">
+                            <div class="badge">🔒 HIPAA Compliant</div>
+                            <div class="badge">🛡️ FDA Registered</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
