@@ -1,3 +1,11 @@
 venv/
+.venv/
 sampleUi/
 sampleUi
+*.svg
+*.db
+CLAUDE.md
+course.md
+plan.md
+guide.md
+.claude/

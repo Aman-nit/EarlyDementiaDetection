@@ -1,0 +1,22 @@
+# Core ML Frameworks
+# torch
+# torchvision
+monai
+scikit-learn
+
+# Medical Imaging & Data Handling
+nibabel
+SimpleITK
+numpy
+pandas
+
+# API & Server
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+pydantic
+
+# Utilities
+tqdm
+python-multipart
