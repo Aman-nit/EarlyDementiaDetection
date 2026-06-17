@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
           <div className="navbar-logo-icon">
             <Brain size={20} />
           </div>
-          <span>Neuro<span className="text-gradient">Scan</span></span>
+          <span>Cogni<span className="text-gradient">Check</span></span>
         </Link>
 
         <div className="navbar-links">

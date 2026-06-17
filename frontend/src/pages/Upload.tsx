@@ -3,12 +3,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../api';
 import {
   UploadCloud,
-  FileText,
   CheckCircle,
   AlertCircle,
   Brain,
   ArrowRight,
-  X,
   HardDrive,
   Shield,
 } from 'lucide-react';
@@ -154,41 +152,6 @@ const MRIUpload: React.FC = () => {
                   </>
                 )}
               </div>
-
-              {/* Selected File Info */}
-              {file && status !== 'success' && (
-                <div className="animate-slide-up" style={{
-                  marginTop: '1.5rem',
-                  padding: '1rem 1.25rem',
-                  background: 'rgba(15, 23, 42, 0.5)',
-                  border: '1px solid var(--dark-border)',
-                  borderRadius: 'var(--radius-md)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <div style={{
-                      width: 40, height: 40, borderRadius: 'var(--radius-sm)',
-                      background: 'rgba(129, 140, 248, 0.1)', color: 'var(--neon-primary)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    }}>
-                      <FileText size={20} />
-                    </div>
-                    <div>
-                      <p style={{ fontWeight: 600, fontSize: '0.9375rem', color: 'var(--dark-text)' }}>{file.name}</p>
-                      <p className="text-xs text-dark-muted">{formatFileSize(file.size)}</p>
-                    </div>
-                  </div>
-                  <button
-                    onClick={(e) => { e.stopPropagation(); removeFile(); }}
-                    className="btn btn-ghost btn-icon"
-                    style={{ color: 'var(--text-muted)' }}
-                  >
-                    <X size={18} />
-                  </button>
-                </div>
-              )}
 
               {/* Progress Bar */}
               {status === 'uploading' && (

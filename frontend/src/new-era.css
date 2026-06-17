@@ -225,6 +225,23 @@
   color: var(--dark-text-secondary);
 }
 
+/* Make brand gradient readable on dark navbar */
+.dark-navbar .navbar-logo .text-gradient {
+  background: linear-gradient(135deg, var(--neon-primary) 0%, var(--neon-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Ensure the non-gradient brand text is visible on dark navbar */
+.dark-navbar .navbar-logo {
+  color: var(--dark-text);
+  font-weight: 800;
+}
+.dark-navbar .navbar-logo span {
+  color: var(--dark-text);
+}
+
 .dark-navbar .navbar-link:hover {
   color: var(--neon-accent);
   background: rgba(255,255,255,0.05);

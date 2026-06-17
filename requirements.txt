@@ -17,6 +17,9 @@ sqlalchemy
 psycopg2-binary
 pydantic
 
+# Environment variable loading
+python-dotenv
+
 # Utilities
 tqdm
 python-multipart

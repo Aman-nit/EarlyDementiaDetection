@@ -7,6 +7,7 @@ import {
   Shield,
   CheckCircle2,
   ArrowLeft,
+  Home,
   FileText,
   AlertTriangle,
   Info,
@@ -117,36 +118,43 @@ const Dashboard: React.FC = () => {
     <>
       <Navbar />
       <div className="new-era-page" style={{ paddingTop: '80px' }}>
-        <div className="page-header" style={{ borderBottom: 'none' }}>
-          <div className="container">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-              <div>
-                <button
-                  onClick={() => navigate('/')}
-                  className="btn btn-outline-neon"
-                  style={{ marginBottom: '0.5rem', marginLeft: '-0.75rem', padding: '0.5rem 1rem' }}
-                >
-                  <ArrowLeft size={16} /> Back to Home
-                </button>
-                <h1 className="text-h1 text-white" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <FileText size={28} style={{ color: 'var(--neon-primary)' }} />
-                  Risk Assessment Report
-                </h1>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <span className={`badge ${config.badge}`}>
-                  Patient #{patientId}
-                </span>
-                <span className="badge" style={{ background: 'rgba(129,140,248,0.1)', color: 'var(--neon-primary)', border: '1px solid rgba(129,140,248,0.3)' }}>
-                  <Clock size={12} /> {new Date().toLocaleDateString()}
-                </span>
-              </div>
+        <div className="page-header" style={{ borderBottom: 'none', padding: '0 0 1.75rem', background: 'transparent', boxShadow: 'none' }}>
+          <div className="container" style={{ textAlign: 'center' }}>
+            <h1
+              className="text-h1"
+              style={{
+                margin: 0,
+                fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
+                fontWeight: 900,
+                letterSpacing: '-0.04em',
+                lineHeight: 1.05,
+                color: 'var(--dark-text-primary)',
+                textShadow: '0 0 24px rgba(129, 140, 248, 0.14)',
+              }}
+            >
+              Risk Assessment Report
+            </h1>
+            <p className="text-dark-muted" style={{ margin: '0.75rem 0 0', fontSize: '0.95rem' }}>
+              {/* Patient #{patientId} · Comprehensive multimodal risk summary */}
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', marginTop: '1rem' }}>
+              <span className="badge" style={{ background: 'rgba(129,140,248,0.1)', color: 'var(--neon-primary)', border: '1px solid rgba(129,140,248,0.3)' }}>
+                <Clock size={12} /> {new Date().toLocaleDateString()}
+              </span>
+              <button
+                onClick={() => navigate('/')}
+                className="btn btn-outline-neon"
+                style={{ padding: '0.42rem 0.8rem', fontSize: '0.8rem' }}
+              >
+                <Home size={14} /> Back to Home
+              </button>
             </div>
           </div>
         </div>
 
         <div className="page-body">
           <div className="container">
+
             {/* Risk Summary Banner */}
             <div className={`risk-banner ${config.bannerClass} animate-slide-up`} style={{ marginBottom: '2rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>

@@ -1,11 +1,281 @@
-venv/
+# ============================================================================
+# Early Dementia Detection - .gitignore
+# ============================================================================
+# Rules cover: Python, FastAPI, PyTorch, React/Vite, Node, OS junk, secrets.
+# `.gitignore` only blocks UNTRACKED files. For files already in git history,
+# use `git rm --cached <path>` (commands at the bottom of this file's notes).
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# 1. Environment files / secrets  (NEVER commit)
+# ----------------------------------------------------------------------------
+.env
+.env.*
+.env.local
+.env.*.local
+backend/.env
+backend/.env.*
+frontend/.env
+frontend/.env.*
+frontend/.env.development
+frontend/.env.production
+*.pem
+*.key
+secrets/
+.envrc
+
+# ----------------------------------------------------------------------------
+# 2. Python
+# ----------------------------------------------------------------------------
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
 .venv/
-sampleUi/
-sampleUi
-*.svg
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Poetry / uv
+poetry.lock
+uv.lock
+
+# mypy / pytest / coverage
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+.cache
+.pyright_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# Type stubs / lsp
+.pyre/
+pyrightconfig.json
+
+# ----------------------------------------------------------------------------
+# 3. FastAPI / Uvicorn runtime
+# ----------------------------------------------------------------------------
+# Logs
+*.log
+logs/
+uvicorn.log
+fastapi.log
+
+# Reload / state files
+*.pid
+*.sock
+
+# ----------------------------------------------------------------------------
+# 4. ML / data science
+# ----------------------------------------------------------------------------
+# Trained model checkpoints (keep code, not binary artifacts)
+*.pth
+*.pt
+*.pkl
+*.h5
+*.hdf5
+*.onnx
+*.ckpt
+*.joblib
+*.npy
+*.npz
+*.parquet
+*.feather
+
+# MLflow / DVC / Weights & Biases
+mlruns/
+mlartifacts/
+dvc-store/
+.dvc/
+wandb/
+.wandb/
+
+# Datasets (too large + often licensed). Commit a small sample or use
+# DVC / external storage instead.
+backend/Datasets/
+data/raw/
+data/interim/
+data/external/
+*.csv
+*.tsv
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+
+# Patient-uploaded content (PII / HIPAA-style concern)
+backend/uploads/
+uploads/
+media/
+
+# ----------------------------------------------------------------------------
+# 5. Databases
+# ----------------------------------------------------------------------------
 *.db
+*.sqlite
+*.sqlite3
+*.sql
+*.dump
+pgdata/
+postgres-data/
+
+# ----------------------------------------------------------------------------
+# 6. Node / React / Vite frontend
+# ----------------------------------------------------------------------------
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+frontend/dist/
+frontend/build/
+.next/
+.nuxt/
+out/
+
+# Vite cache
+.vite/
+*.local
+
+# Coverage / test
+coverage/
+.nyc_output/
+
+# Storybook
+storybook-static/
+
+# Bundle analyzer
+*.stats.html
+*.stats.json
+
+# ----------------------------------------------------------------------------
+# 7. IDEs / editors
+# ----------------------------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Project-specific editor overrides
+project.godot
+*.code-workspace
+
+# ----------------------------------------------------------------------------
+# 8. OS / shell
+# ----------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Tt]humbs.db
+$RECYCLE.BIN/
+
+# ----------------------------------------------------------------------------
+# 9. CI / Docker / deploy artifacts
+# ----------------------------------------------------------------------------
+Dockerfile.dev
+docker-compose.override.yml
+*.tar
+deploy/
+*.zip
+.cache/
+
+# ----------------------------------------------------------------------------
+# 10. Documentation / project files (kept locally, not versioned)
+# ----------------------------------------------------------------------------
 CLAUDE.md
 course.md
 plan.md
 guide.md
-.claude/
+PROJECT_MASTER_GUIDE.md
+CLAUDE_COMMANDS.md
+_- visual selection.svg
+
+# ----------------------------------------------------------------------------
+# 11. Project-local scratch / samples
+# ----------------------------------------------------------------------------
+sampleUi/
+sampleUi
+scratch/
+playground/
+notes.txt
+TODO.local.md
+
+# ----------------------------------------------------------------------------
+# 12. Claude Code workspace data (per-user, not for the repo)
+# ----------------------------------------------------------------------------
+.claude/agent-memory/
+.claude/agents/
+.claude/settings.local.json
+.claude/projects/
+
+# ============================================================================
+# To untrack files that are ALREADY in git history:
+# ============================================================================
+#   # Remove from index, keep on disk
+#   git rm -r --cached .venv
+#   git rm -r --cached frontend/node_modules
+#   git rm -r --cached "backend/Datasets"
+#   git rm -r --cached backend/__pycache__ backend/ml/__pycache__ \
+#                     backend/models/__pycache__ backend/routes/__pycache__ \
+#                     backend/services/__pycache__
+#   git rm --cached "_.svg" 2>/dev/null || true
+#   git rm -r --cached backend/uploads
+#   git rm --cached dementia_detection.db
+#
+#   git add .gitignore
+#   git commit -m "chore: clean up gitignore and untrack generated artifacts"
+# ============================================================================

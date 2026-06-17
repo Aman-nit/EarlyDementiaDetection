@@ -1,14 +1,30 @@
 import os
+from pathlib import Path
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from typing import Generator
+from dotenv import load_dotenv
+
 from .models.database import Base
 
-# Use SQLite for local development (no installation required)
-DATABASE_URL = "postgresql://neondb_owner:npg_Is7mbnlBcDV1@ep-rough-credit-aqq5pjki.c-8.us-east-1.aws.neon.tech/neondb?sslmode=require"
+# Load .env from the project root (EarlyDementiaDetection/.env) so that
+# `uvicorn backend.main:app` works regardless of where it's invoked from.
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+load_dotenv(_PROJECT_ROOT / ".env")
+
+# Read DATABASE_URL from environment. We refuse to start without one so
+# the misconfiguration is loud, not silent.
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise RuntimeError(
+        "DATABASE_URL is not set. "
+        "Add it to your .env file (see .env.example) or as a system environment variable."
+    )
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
 
 def get_db() -> Generator[Session, None, None]:
     """
@@ -19,6 +35,7 @@ def get_db() -> Generator[Session, None, None]:
         yield db
     finally:
         db.close()
+
 
 def init_db():
     """

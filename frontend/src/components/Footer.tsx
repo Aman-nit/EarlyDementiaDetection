@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
               <div className="navbar-logo-icon" style={{ width: 32, height: 32 }}>
                 <Brain size={16} />
               </div>
-              <span>Neuro<span className="text-gradient">Scan</span></span>
+              <span>Cogni<span className="text-gradient">Check</span></span>
             </Link>
             <p>
               AI-powered multimodal early dementia detection combining brain imaging,

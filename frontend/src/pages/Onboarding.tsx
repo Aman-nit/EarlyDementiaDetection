@@ -124,7 +124,7 @@ const Onboarding: React.FC = () => {
     <>
       <Navbar />
       <div className="new-era-page" style={{ paddingTop: '80px' }}>
-        <div className="page-header" style={{ borderBottom: 'none' }}>
+        {/* <div className="page-header" style={{ borderBottom: 'none' }}>
           <div className="container-sm text-center">
             <div className="badge" style={{ background: 'rgba(34, 211, 238, 0.1)', color: 'var(--neon-accent)', border: '1px solid rgba(34,211,238,0.3)', marginBottom: '1rem' }}>
               <Stethoscope size={14} /> Clinical Intake
@@ -134,7 +134,7 @@ const Onboarding: React.FC = () => {
               Please provide accurate clinical information for high-precision evaluation.
             </p>
           </div>
-        </div>
+        </div> */}
 
         <div className="page-body">
           <div className="container-sm">
